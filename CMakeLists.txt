@@ -6,6 +6,7 @@ find_package(JNI REQUIRED)
 include(UseJava)
 include(UseSWIG)
 include_directories(${JNI_INCLUDE_DIRS})
+include_directories(${CMAKE_CURRENT_LIST_DIR})
 
 set( CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR} )
 
@@ -14,7 +15,7 @@ swig_add_module(
     example 
     java 
     example.i 
-    example.c
+    example.cpp
 )
 
 # For convenience we copy the dynamic library to the current build folder
@@ -42,3 +43,11 @@ add_jar(
     ENTRY_POINT main
 )
 add_dependencies( Main ExampleJNI )
+
+enable_testing()
+
+add_test(
+    NAME TestReturnValue
+    COMMAND ${JAVA_HOME}/bin/java -jar Main.jar
+)
+
