@@ -13,9 +13,7 @@ extern int foo();
 #include <stdint.h>
 
 struct SpaceSense_;
-//typedef struct SpaceSense_* SpaceSensePtr;
-
-//typedef struct SpaceSense_* SpaceSensePtr;
+typedef struct SpaceSense_* SpaceSensePtr;
 
 typedef struct SpaceSensePoint2f_
 {
@@ -23,7 +21,7 @@ typedef struct SpaceSensePoint2f_
 } SpaceSensePoint2f;
 
 SPACESENSE_API
-SpaceSensePoint2f spacesense_test_point(const struct SpaceSense_* spacesense);
+SpaceSensePoint2f spacesense_test_point(const SpaceSensePtr spacesense);
 
 /*
 typedef struct SpaceSenseRect_ {
@@ -36,14 +34,14 @@ SPACESENSE_API void spacesense_set_rect(SpaceSenseRect *spaceSenseRect, int32_t 
 /*! create a new tracker API
  * \note the tracker needs to be loaded with \ref spacesense_load()
  */
-SPACESENSE_API struct SpaceSense_*
+SPACESENSE_API SpaceSensePtr
 spacesense_new();
 
 /*! frees SpaceSense API as well as contained detector data
  *
  */
 SPACESENSE_API void
-spacesense_delete(struct SpaceSense_* ft);
+spacesense_delete(SpaceSensePtr ft);
 
 
 

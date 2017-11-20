@@ -6,10 +6,10 @@ struct SpaceSense_ {
   float y;
 };
 
-typedef struct SpaceSense_* SpaceSensePtr;
+typedef SpaceSensePtr SpaceSensePtr;
 
 SPACESENSE_API
-SpaceSensePoint2f spacesense_test_point(const struct SpaceSense_* spacesense)
+SpaceSensePoint2f spacesense_test_point(const SpaceSensePtr spacesense)
 {
   SpaceSensePoint2f f;
   f.x = spacesense->x;
