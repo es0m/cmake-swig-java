@@ -5,9 +5,17 @@
 %nodefaultdtor SpaceSense_; 
 struct SpaceSense_ { };
 
+
+
+
 %{
 #include "example.h"
 %}
+%include <stdint.i>
+%include <arrays_java.i>
+%include <carrays.i>
+//JAVA_ARRAYSOFCLASSES(SpaceSenseState);
+%array_class(SpaceSenseState, SpaceSenseStateArray);
 
 
 
@@ -20,4 +28,9 @@ struct SpaceSense_ { };
 //%rename(SpaceSensePtr) SWIGTYPE_p_SpaceSense_;
 //
 
+// this needs to be added after definition of SpaceSenseStatePtr
+//%array_functions(SpaceSenseStateArray, spacesensestatearray )
+
+
 %include "example.h"
+

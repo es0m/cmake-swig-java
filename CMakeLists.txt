@@ -15,8 +15,10 @@ swig_add_module(
     example 
     java 
     example.i 
+    example.h
     example.cpp
 )
+#add_dependencies( example example.i example.cpp example.h )
 
 # For convenience we copy the dynamic library to the current build folder
 add_custom_command(
