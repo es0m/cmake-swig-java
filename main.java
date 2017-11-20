@@ -1,7 +1,6 @@
 
 public class main 
 {
-
     public static boolean testArrays(SpaceSense_ ss)
     {
       int N = example.SPACESENSE_MAX_STATES; // should be 
@@ -12,10 +11,17 @@ public class main
         if ( state.getN_points() != i ) {
           return false;
         }
-        System.out.println("Java state: " + i);
+        SpaceSensePoint2fArray pts = SpaceSensePoint2fArray.frompointer(state.getPoints());
         for ( int j=0; j<state.getN_points(); ++j ) {
-          SpaceSensePoint2f p = state.getPoints();
+          SpaceSensePoint2f pt = pts.getitem(j);
+          if ( pt.getX() !=j ) {
+            return false;
+          }
+          if ( pt.getY() !=j ) {
+            return false;
+          }
         }
+        System.out.println("Java state: " + i + " ok!");
       }
       return res == N;
     }
