@@ -1,7 +1,7 @@
-#ifndef INCLUDED_FACESENSE_H
-#define INCLUDED_FACESENSE_H
+#ifndef INCLUDED_SPACESENSE_H
+#define INCLUDED_SPACESENSE_H
 
-#define FACESENSE_API
+#define SPACESENSE_API
 
 #ifdef __cplusplus
 extern "C" {
@@ -12,38 +12,38 @@ extern int foo();
 
 #include <stdint.h>
 
-struct FaceSense_;
-//typedef struct FaceSense_* FaceSensePtr;
+struct SpaceSense_;
+//typedef struct SpaceSense_* SpaceSensePtr;
 
-//typedef struct FaceSense_* FaceSensePtr;
+//typedef struct SpaceSense_* SpaceSensePtr;
 
-typedef struct FaceSensePoint2f_
+typedef struct SpaceSensePoint2f_
 {
     float x, y;
-} FaceSensePoint2f;
+} SpaceSensePoint2f;
 
-FACESENSE_API
-FaceSensePoint2f facesense_test_point(const struct FaceSense_* facesense);
+SPACESENSE_API
+SpaceSensePoint2f spacesense_test_point(const struct SpaceSense_* spacesense);
 
 /*
-typedef struct FaceSenseRect_ {
+typedef struct SpaceSenseRect_ {
   int32_t x, y, w, h;
-} FaceSenseRect;
+} SpaceSenseRect;
 
-FACESENSE_API void facesense_set_rect(FaceSenseRect *faceSenseRect, int32_t x, int32_t y, int32_t w, int32_t h);
+SPACESENSE_API void spacesense_set_rect(SpaceSenseRect *spaceSenseRect, int32_t x, int32_t y, int32_t w, int32_t h);
 */
 
 /*! create a new tracker API
- * \note the tracker needs to be loaded with \ref facesense_load()
+ * \note the tracker needs to be loaded with \ref spacesense_load()
  */
-FACESENSE_API struct FaceSense_*
-facesense_new();
+SPACESENSE_API struct SpaceSense_*
+spacesense_new();
 
-/*! frees FaceSense API as well as contained detector data
+/*! frees SpaceSense API as well as contained detector data
  *
  */
-FACESENSE_API void
-facesense_delete(struct FaceSense_* ft);
+SPACESENSE_API void
+spacesense_delete(struct SpaceSense_* ft);
 
 
 

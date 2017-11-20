@@ -50,4 +50,6 @@ add_test(
     NAME TestReturnValue
     COMMAND ${JAVA_HOME}/bin/java -jar Main.jar
 )
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} -C $<CONFIG>
+                  DEPENDS Main)
 

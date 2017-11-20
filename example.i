@@ -1,22 +1,23 @@
 %module example
 
-%nodefaultctor FaceSense_; 
-%nodefaultdtor FaceSense_; 
+// constructor/destructor definitions must come *before* struct definitions
+%nodefaultctor SpaceSense_; 
+%nodefaultdtor SpaceSense_; 
+struct SpaceSense_ { };
 
-struct FaceSense_ { };
 %{
 #include "example.h"
 %}
 
 
 
-//%rename(FaceSense_) SWIGTYPE_p_FaceSensePtr;
+//%rename(SpaceSense_) SWIGTYPE_p_SpaceSensePtr;
 
-//New and delete definitions for FaceSense_
-//%newobject facesense_new;
-//%delobject facesense_delete;
+//New and delete definitions for SpaceSense_
+//%newobject Spacesense_new;
+//%delobject Spacesense_delete;
 
-//%rename(FaceSensePtr) SWIGTYPE_p_FaceSense_;
+//%rename(SpaceSensePtr) SWIGTYPE_p_SpaceSense_;
 //
 
 %include "example.h"
