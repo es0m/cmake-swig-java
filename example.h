@@ -54,7 +54,14 @@ typedef SpaceSenseState* SpaceSenseStatePtr;
  */
 SPACESENSE_API int32_t
 spacesense_frobnicate(SpaceSensePtr d,
-  int32_t max_states, SpaceSenseStatePtr states);//, int32_t* n_frobnications);
+  int32_t max_states, SpaceSenseStatePtr states);
+
+/*! discombobulates the states 
+  (sets the number of points and the values of points in x/y to their index in the array)
+ */
+SPACESENSE_API int32_t
+spacesense_discombobulate(SpaceSensePtr d,
+  int32_t max_states, SpaceSenseStatePtr states, int32_t* n_xooxs);
 
 
 

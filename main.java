@@ -1,11 +1,8 @@
 
 public class main 
 {
-    public static boolean testArrays(SpaceSense_ ss)
+    public static boolean compareStates(SpaceSenseStateArray states, int N, int res)
     {
-      int N = example.SPACESENSE_MAX_STATES; // should be 
-      SpaceSenseStateArray states = new SpaceSenseStateArray(N);
-      int res = example.spacesense_frobnicate(ss, N, states.cast());//, n_frobnications);
       for ( int i=0; i<res; ++i ) {
         SpaceSenseState state = states.getitem(i);
         if ( state.getN_points() != i ) {
@@ -26,6 +23,27 @@ public class main
       return res == N;
     }
 
+    public static boolean testFrobnicate(SpaceSense_ ss, SpaceSenseStateArray states, int N)
+    {
+      int res = example.spacesense_frobnicate(ss, N, states.cast());//, n_frobnications);
+      return compareStates(states, N, res);
+    }
+    public static boolean testDiscombobulate(SpaceSense_ ss, SpaceSenseStateArray states, int N)
+    {
+      int[] out = {0}; 
+      int res = example.spacesense_discombobulate(ss, N, states.cast(), out);
+      boolean success = out[0] == N;
+      return compareStates(states, N, res) && success;
+    }
+    
+    public static boolean testArrays(SpaceSense_ ss)
+    {
+      int N = example.SPACESENSE_MAX_STATES; // should be 
+      SpaceSenseStateArray states = new SpaceSenseStateArray(N);
+      boolean frob_ok = testFrobnicate(ss, states, N);//, n_frobnications);
+      boolean xoox_ok = testDiscombobulate(ss, states, N);//, n_frobnications);
+      return frob_ok && xoox_ok;
+    }
     public static void main(String argv[]) 
     {
         System.loadLibrary("example"); // Attempts to load example.dll (on Windows) or libexample.so (on Linux)

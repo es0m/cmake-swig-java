@@ -49,7 +49,7 @@ spacesense_delete(SpaceSensePtr fs)
 
 SPACESENSE_API int32_t
 spacesense_frobnicate(SpaceSensePtr d,
-  int32_t max_states, SpaceSenseState states[])//, int32_t* n_frobnications)
+  int32_t max_states, SpaceSenseState* states)
 {
   for ( int i=0; i<max_states; ++i ) {
     auto& s(states[i]);
@@ -59,11 +59,27 @@ spacesense_frobnicate(SpaceSensePtr d,
       ss.x = 1.0f*j;
       ss.y = 1.0f*j;
     }
-    std::cerr << "state: " << i << std::endl;
   }
-//  *n_frobnications = max_states;
   return max_states;
 }
+
+SPACESENSE_API int32_t
+spacesense_discombobulate(SpaceSensePtr d,
+  int32_t max_states, SpaceSenseState* states, int32_t* n_xooxs)
+{
+  for ( int i=0; i<max_states; ++i ) {
+    auto& s(states[i]);
+    s.n_points = i;
+    for ( int j=0; j<i; ++j ) {
+      auto& ss(s.points[j]);
+      ss.x = 1.0f*j;
+      ss.y = 1.0f*j;
+    }
+  }
+  *n_xooxs = max_states;
+  return max_states;
+}
+
 
 
 

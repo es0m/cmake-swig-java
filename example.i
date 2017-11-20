@@ -19,10 +19,10 @@ struct SpaceSense_ { };
 
 // this needs to be added after definition of SpaceSensePoint2f
 %array_class(SpaceSensePoint2f, SpaceSensePoint2fArray);
-//%array_functions(SpaceSensePoint2f, spacesensepoint2f )
 
-
-
+// this redefines the output variables of functions
+%include "typemaps.i"
+%apply int32_t *OUTPUT {int32_t *n_xooxs};
 
 %include "example.h"
 
