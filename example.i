@@ -40,13 +40,6 @@ struct SpaceSense_ { };
 %ignore SpaceSenseImage_::data;
 %ignore SpaceSenseImage_::length;
 
-//%typemap(in)  SpaceSensePixelPtr {
-//  $1 = (unsigned char*)$input;
-//}
-
-//%typemap(jstype) SpaceSensePixelPtr "long"
-//%typemap(jni)    SpaceSensePixelPtr "jlong"
-
 %newobject spacesense_image_new;
 %delobject spacesense_image_delete;
 
