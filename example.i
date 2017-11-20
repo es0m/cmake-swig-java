@@ -24,15 +24,7 @@ struct SpaceSense_ { };
 %include "typemaps.i"
 %apply int32_t *OUTPUT {int32_t *n_xooxs};
 
-// these are definitions to map byte[] to int
-//%typemap(in) (long , int) {
-//  $1 = facesense_image_new($input);
-//}
-//%typemap(javain) cv::Mat "$javainput.dataAddr()"
-
-//%apply long INPUT {unsigned char* data};
-
-//%array_class(unsigned char,ByteArray);
+// map typedef to long/unsigned char
 %typemap(jtype) SpaceSensePixelPtr "long"
 %typemap(jstype) SpaceSensePixelPtr "long"
 %typemap(jni) SpaceSensePixelPtr "unsigned char*"
