@@ -10,15 +10,20 @@ include_directories(${CMAKE_CURRENT_LIST_DIR})
 
 set( CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR} )
 
+set( CMAKE_SWIG_FLAGS -Wall -debug-typemap -debug-tmsearch -debug-tmused)
 # Build the C++ code into a dynamic library: example.dll (on Windows) or libexample.so (on Linux)
-swig_add_module(
+swig_add_library(
     example 
-    java 
-    example.i 
+    LANGUAGE java 
+    SOURCES example.i 
     example.h
     example.cpp
 )
-#add_dependencies( example example.i example.cpp example.h )
+set(  ${SWIG_MODULE_example_EXTRA_DEPS} 
+  ${CMAKE_CURRENT_LIST_DIR}/example.i 
+  ${CMAKE_CURRENT_LIST_DIR}/example.cpp 
+  ${CMAKE_CURRENT_LIST_DIR}/example.h )
+#  ${CMAKE_SWIG_OUTDIR}/exampleJAVA_wrap.c 
 
 # For convenience we copy the dynamic library to the current build folder
 add_custom_command(

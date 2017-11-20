@@ -80,7 +80,35 @@ spacesense_discombobulate(SpaceSensePtr d,
   return max_states;
 }
 
+SPACESENSE_API SpaceSenseImage* 
+spacesense_image_new()
+{
+  SpaceSenseImage* image = new SpaceSenseImage;
+  image->length = 0;
+  image->data = 0;
+  return image;
+}
 
+SPACESENSE_API void             
+spacesense_image_delete(SpaceSenseImage* ip)
+{
+  delete ip;
+}
+
+SPACESENSE_API void             
+spacesense_image_from_buffer(SpaceSenseImage* image, SpaceSensePixelPtr data, int32_t length)
+{
+  image->length = length;
+  image->data = data;
+}
+
+SPACESENSE_API void             
+spacesense_image_lollygag(SpaceSenseImage* ip, int32_t value)
+{
+  for ( int32_t i = 0; i<ip->length; ++i ) {
+    ip->data[i] = (unsigned char)value;
+  }
+}
 
 
 int foo() 

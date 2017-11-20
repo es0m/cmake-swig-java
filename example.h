@@ -64,6 +64,23 @@ spacesense_discombobulate(SpaceSensePtr d,
   int32_t max_states, SpaceSenseStatePtr states, int32_t* n_xooxs);
 
 
+/*! test handling of unsigned char pointers etc. 
+ */
+typedef unsigned char* SpaceSensePixelPtr;
+typedef struct SpaceSenseImage_
+{
+  int32_t length;
+  SpaceSensePixelPtr data;
+} SpaceSenseImage;
+
+SPACESENSE_API SpaceSenseImage* spacesense_image_new();
+SPACESENSE_API void             spacesense_image_delete(SpaceSenseImage* ip);
+SPACESENSE_API void             spacesense_image_from_buffer(SpaceSenseImage*, SpaceSensePixelPtr data, int32_t length);
+
+/*! sets the image to the given value
+ */
+SPACESENSE_API void             spacesense_image_lollygag(SpaceSenseImage* ip, int32_t value);
+
 
 #ifdef __cplusplus
 }

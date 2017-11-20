@@ -25,7 +25,7 @@ public class main
 
     public static boolean testFrobnicate(SpaceSense_ ss, SpaceSenseStateArray states, int N)
     {
-      int res = example.spacesense_frobnicate(ss, N, states.cast());//, n_frobnications);
+      int res = example.spacesense_frobnicate(ss, N, states.cast());
       return compareStates(states, N, res);
     }
     public static boolean testDiscombobulate(SpaceSense_ ss, SpaceSenseStateArray states, int N)
@@ -38,12 +38,25 @@ public class main
     
     public static boolean testArrays(SpaceSense_ ss)
     {
-      int N = example.SPACESENSE_MAX_STATES; // should be 
+      int N = example.SPACESENSE_MAX_STATES; 
       SpaceSenseStateArray states = new SpaceSenseStateArray(N);
-      boolean frob_ok = testFrobnicate(ss, states, N);//, n_frobnications);
-      boolean xoox_ok = testDiscombobulate(ss, states, N);//, n_frobnications);
+      boolean frob_ok = testFrobnicate(ss, states, N);
+      boolean xoox_ok = testDiscombobulate(ss, states, N);
       return frob_ok && xoox_ok;
     }
+    
+    public static boolean testImage()
+    {
+      long val = 10000; 
+      int len = 10;
+      SpaceSenseImage image = example.spacesense_image_new();
+
+      example.spacesense_image_from_buffer(image, val, len);
+      
+      example.spacesense_image_delete(image);
+      return true;
+    }
+    
     public static void main(String argv[]) 
     {
         System.loadLibrary("example"); // Attempts to load example.dll (on Windows) or libexample.so (on Linux)
@@ -60,12 +73,13 @@ public class main
         if ( !success ) {
           System.exit(1);
         }
-        
         example.spacesense_delete(ss);
-        
-        if ( example.foo() == 124 ) {
-          System.exit(0);
+        if ( example.foo() != 124 ) {
+          System.exit(1);
         } 
-        System.exit(1);
+        if ( !testImage() ) {
+          System.exit(1);
+        }
+        System.exit(0);
     }
 }
