@@ -57,9 +57,22 @@ public class main
       return true;
     }
     
+    public static boolean testConstChar()
+    {
+      long val = 10000; 
+      SpaceSense_ ss = example.spacesense_new();
+      String s = example.spacesense_version(ss);
+      example.spacesense_delete(ss);
+      System.out.println("Version: " + s);
+      return s.equals("Version 1");
+    }
+    
     public static void main(String argv[]) 
     {
         System.loadLibrary("example"); // Attempts to load example.dll (on Windows) or libexample.so (on Linux)
+        if ( !testConstChar() ) {
+            System.exit(1);
+        }
         System.out.println(example.foo());
         SpaceSense_ ss = example.spacesense_new();
         SpaceSensePoint2f pt = example.spacesense_test_point(ss);

@@ -47,6 +47,12 @@ spacesense_delete(SpaceSensePtr fs)
   delete fs;
 }
 
+SPACESENSE_API const char*
+spacesense_version(SpaceSensePtr ft)
+{
+  return "Version 1";
+}
+
 SPACESENSE_API int32_t
 spacesense_frobnicate(SpaceSensePtr d,
   int32_t max_states, SpaceSenseState* states)

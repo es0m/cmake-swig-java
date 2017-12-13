@@ -29,11 +29,22 @@ struct SpaceSense_ { };
 %typemap(jstype) SpaceSensePixelPtr "long"
 %typemap(jni) SpaceSensePixelPtr "unsigned char*"
 %typemap(javain) SpaceSensePixelPtr "$javainput"
-%ignore SpaceSenseImage_::data;
+%typemap(javaout) SpaceSensePixelPtr {
+    return $imclassname.SpaceSenseImage_data_get(swigCPtr, this);
+  }
+  
 %ignore SpaceSenseImage_::length;
+//%ignore SpaceSenseImage_::data;
 
-%newobject spacesense_image_new;
-%delobject spacesense_image_delete;
+%typemap(javacode) SpaceSenseImage %{
+  public long getDataPtr() {
+    return this->data;    
+  }
+%}
+
+//%newobject spacesense_image_new;
+// do not use as otherwise garbage collection can kick in anytime
+//%delobject spacesense_image_delete;
 
 %include "example.h"
 

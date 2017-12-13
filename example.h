@@ -36,6 +36,12 @@ spacesense_new();
 SPACESENSE_API void
 spacesense_delete(SpaceSensePtr ft);
 
+/*! returns the SpaceSense API version. 
+*
+*/
+SPACESENSE_API const char*
+spacesense_version(SpaceSensePtr ft);
+
 
 #define SPACESENSE_MAX_POINTS (256)
 typedef struct SpaceSenseState_
