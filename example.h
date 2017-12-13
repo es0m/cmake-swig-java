@@ -42,6 +42,13 @@ spacesense_delete(SpaceSensePtr ft);
 SPACESENSE_API const char*
 spacesense_version(SpaceSensePtr ft);
 
+/*! sets the SpaceSense API version. 
+* the result needs to be a String that can be freed by Java
+*
+*/
+SPACESENSE_API void
+spacesense_get_version(SpaceSensePtr ft, const char** version);
+
 
 #define SPACESENSE_MAX_POINTS (256)
 typedef struct SpaceSenseState_

@@ -53,6 +53,13 @@ spacesense_version(SpaceSensePtr ft)
   return "Version 1";
 }
 
+SPACESENSE_API void
+spacesense_get_version(SpaceSensePtr ft, const char** result)
+{
+  *result = spacesense_version(ft);
+}
+
+
 SPACESENSE_API int32_t
 spacesense_frobnicate(SpaceSensePtr d,
   int32_t max_states, SpaceSenseState* states)

@@ -20,9 +20,14 @@ struct SpaceSense_ { };
 // this needs to be added after definition of SpaceSensePoint2f
 %array_class(SpaceSensePoint2f, SpaceSensePoint2fArray);
 
+%include "various.i"
+%apply char **STRING_OUT { const char **version };
+
 // this redefines the output variables of functions
 %include "typemaps.i"
 %apply int32_t *OUTPUT {int32_t *n_xooxs};
+
+
 
 // map typedef to long/unsigned char
 %typemap(jtype) SpaceSensePixelPtr "long"

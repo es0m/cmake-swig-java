@@ -57,20 +57,33 @@ public class main
       return true;
     }
     
-    public static boolean testConstChar()
+    public static boolean testConstCharReturn()
     {
       long val = 10000; 
       SpaceSense_ ss = example.spacesense_new();
       String s = example.spacesense_version(ss);
       example.spacesense_delete(ss);
-      System.out.println("Version: " + s);
+      System.out.println("Version by return: " + s);
       return s.equals("Version 1");
+    }
+    public static boolean testConstCharArg()
+    {
+      long val = 10000; 
+      SpaceSense_ ss = example.spacesense_new();
+      String stringOutArray[] = { "" }; 
+      example.spacesense_get_version(ss, stringOutArray);
+      example.spacesense_delete(ss);
+      System.out.println("Version as arg: " + stringOutArray[0]);
+      return stringOutArray[0].equals("Version 1");
     }
     
     public static void main(String argv[]) 
     {
         System.loadLibrary("example"); // Attempts to load example.dll (on Windows) or libexample.so (on Linux)
-        if ( !testConstChar() ) {
+        if ( !testConstCharReturn() ) {
+            System.exit(1);
+        }
+        if ( !testConstCharArg() ) {
             System.exit(1);
         }
         System.out.println(example.foo());
